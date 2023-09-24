@@ -59,11 +59,12 @@ public class GuestbookRepository {
 		try {
 			conn = getConnection();
 			
-			String sql = "insert into guestbook values(null, ?, ?, ?, now())";
+			String sql = "insert into guestbook values(null, ?, ?,now(), ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getName());
 			pstmt.setString(2, vo.getPassword());
 			pstmt.setString(3, vo.getContents());
+			pstmt.setString(4, vo.getContents());
 			
 			int count = pstmt.executeUpdate();
 			
@@ -151,7 +152,7 @@ public class GuestbookRepository {
 			Class.forName("org.mariadb.jdbc.Driver");
 			
 			String url = "jdbc:mariadb://localhost:3307/webdb?charset=utf8";
-			conn = DriverManager.getConnection(url, "webdb", "webdb");
+			conn = DriverManager.getConnection(url, "root", "qpqpqp0614");
 		} catch (ClassNotFoundException e) {
 			System.out.println("드라이버 로딩 실패:" + e);
 		} 
